@@ -1,0 +1,118 @@
+/* common */
+h2 {
+  font-size: 20px;
+  padding-left: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+/* calendar */
+.calendar-wrap {
+  width: 100%;
+  background: #f9f9f9;
+  padding: 20px 0;
+}
+
+.calendar {
+  width: 100%;
+  padding: 20px;
+}
+
+.calendar .year-month {
+  width: 100%;
+}
+.calendar .year-month button {
+  background: unset;
+  color: #4f4f4f;
+  font-size: 25px;
+  width: 100px;
+}
+
+.calendar ul.date {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+}
+.calendar ul.date li {
+  width: 13%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar ul.day {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5;
+}
+.calendar ul.day li {
+  width: 13%;
+  height: 100px;
+  border: 1px solid #dadada;
+  background: #fff;
+  border-radius: 25px;
+  padding: 8px 13px;
+}
+
+/* summary */
+.summary {
+  width: 100%;
+  padding: 20px 0;
+  background: #f9f9f9;
+}
+
+.summary .panel {
+  width: 100%;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.summary .panel dl {
+  width: 30%;
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #dadada;
+  border-radius: 15px;
+}
+
+.summary .panel dl dt {
+  font-size: 18px;
+  padding-bottom: 5px;
+}
+.summary .panel dl dd {
+  color: rgb(16, 161, 112);
+  font-size: 18px;
+}
+
+/* recent */
+.recent {
+  width: 100%;
+  padding: 20px 0;
+  background: #f9f9f9;
+}
+.recent .list {
+  width: 100%;
+  padding: 0 25px;
+}
+.recent .list li {
+  background: #fff;
+  border: 1px solid #dadada;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 10px 0;
+}
+.recent .list li dl dt,
+.recent .list li dl dd,
+.recent .list li span {
+  font-size: 18px;
+}
