@@ -26,6 +26,7 @@ button.rbc-input::-moz-focus-inner {
 .rbc-calendar {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  width: 100%;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -72,6 +73,7 @@ button.rbc-input::-moz-focus-inner {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-weight: 600;
 }
 
 .rbc-rtl {
@@ -79,11 +81,11 @@ button.rbc-input::-moz-focus-inner {
 }
 
 .rbc-off-range {
-  color: #999999;
+  color: #999999 !important;
 }
 
 .rbc-off-range-bg {
-  background: #e6e6e6;
+  background: #e6e6e6 !important;
 }
 
 .rbc-header {
@@ -162,10 +164,11 @@ button.rbc-input::-moz-focus-inner {
 }
 
 .rbc-today {
-  background-color: #eaf6ff;
+  background-color: #eaf6ff !important;
 }
 
 .rbc-toolbar {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -179,6 +182,7 @@ button.rbc-input::-moz-focus-inner {
   align-items: center;
   margin-bottom: 10px;
   font-size: 16px;
+  flex-direction: column;
 }
 .rbc-toolbar .rbc-toolbar-label {
   -webkit-box-flex: 1;
@@ -230,8 +234,12 @@ button.rbc-input::-moz-focus-inner {
 }
 
 .rbc-btn-group {
+  width: 100%;
   display: inline-block;
   white-space: nowrap;
+}
+.rbc-btn-group button {
+  width: 25%;
 }
 .rbc-btn-group > button:first-child:not(:last-child) {
   border-top-right-radius: 0;
@@ -283,9 +291,10 @@ button.rbc-input::-moz-focus-inner {
   box-shadow: none;
   margin: 0;
   padding: 2px 5px;
-  background-color: #3174ad;
+  background-color: #ffffff;
   border-radius: 5px;
-  color: #fff;
+  color: #db7a7a;
+
   cursor: pointer;
   width: 100%;
   text-align: left;
@@ -298,7 +307,7 @@ button.rbc-input::-moz-focus-inner {
 }
 .rbc-event.rbc-selected,
 .rbc-day-slot .rbc-selected.rbc-background-event {
-  background-color: #265985;
+  background-color: #ffffff;
 }
 .rbc-event:focus,
 .rbc-day-slot .rbc-background-event:focus {
@@ -454,6 +463,7 @@ button.rbc-input::-moz-focus-inner {
   -webkit-box-flex: 1;
   -ms-flex: 1 0 0%;
   flex: 1 0 0%;
+  background: #fff;
 }
 .rbc-day-bg + .rbc-day-bg {
   border-left: 1px solid #ddd;
@@ -864,5 +874,7 @@ button.rbc-input::-moz-focus-inner {
 
 /*# sourceMappingURL=react-big-calendar.css.map */
 .myCustomHeight {
+  width: 100%;
   height: 900px;
+  padding: 20px;
 }

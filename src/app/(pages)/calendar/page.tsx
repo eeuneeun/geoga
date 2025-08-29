@@ -1,8 +1,10 @@
-import DefaultCalendar from "@/app/_components/DefaultCalendar";
+import DefaultCalendar from "../../_components/DefaultCalendar";
 import React from "react";
+import { RBCalendar } from "../../_components/RBCalendar";
 
 type Props = {};
 
 export default function Calendar({}: Props) {
-  return <DefaultCalendar />;
+  //   return <DefaultCalendar />;
+  return <RBCalendar />;
 }
