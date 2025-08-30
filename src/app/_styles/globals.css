@@ -93,9 +93,11 @@ h2 {
   color: #10a170;
   font-size: 18px;
 }
+.plus,
 .summary .panel dl.plus dd {
   color: #e13923;
 }
+.minus,
 .summary .panel dl.minus dd {
   color: #23a4eeee;
 }

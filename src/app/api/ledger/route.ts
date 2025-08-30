@@ -4,12 +4,18 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { userId, password } = await req.json();
-    const user = await prisma.user.findFirst({
-      where: { userId, password },
+    const { category, memo, price, start, end } = await req.json();
+    const ledger = await prisma.ledger.create({
+      data: {
+        category,
+        memo,
+        price,
+        start,
+        end,
+      },
     });
     // res.status(201).json(user);
-    return NextResponse.json(user, { status: 201 });
+    return NextResponse.json(ledger, { status: 201 });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
@@ -17,12 +23,8 @@ export async function POST(req: Request) {
 
 export async function GET(req: Request) {
   try {
-    const { userId, password } = await req.json();
-    const user = await prisma.user.findFirst({
-      where: { userId, password },
-    });
-    // res.status(201).json(user);
-    return NextResponse.json(user, { status: 201 });
+    const ledger = await prisma.ledger.findMany();
+    return NextResponse.json(ledger, { status: 201 });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

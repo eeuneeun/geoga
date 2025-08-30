@@ -19,7 +19,7 @@ export default function Recent({}: Props) {
               <dt>여가</dt>
               <dd>2025-08-25</dd>
             </dl>
-            <span>15,000원</span>
+            <span className="minus">- 15,000원</span>
           </li>
         ))}
       </ul>

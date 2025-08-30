@@ -25,10 +25,11 @@ model User {
 }
 
 model Ledger {
-  id         Int      @id @default(autoincrement())
-  title      String
-  price      String
-  start       DateTime
-  end       DateTime
-  createAt   DateTime @default(now())
+  id            Int      @id @default(autoincrement())
+  category      String
+  memo          String
+  price         Int @default(0)
+  start         DateTime @default(now())
+  end           DateTime @default(now())
+  createAt      DateTime @default(now())
 }

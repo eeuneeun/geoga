@@ -368,9 +368,6 @@ h2 {
   height: 35px;
   padding: 0;
 }
-.minus {
-  background: #df7070;
-}
 
 @media (min-width: 900px) {
   .inner {
