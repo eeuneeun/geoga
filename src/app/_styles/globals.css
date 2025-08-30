@@ -90,10 +90,15 @@ h2 {
   padding-bottom: 5px;
 }
 .summary .panel dl dd {
-  color: rgb(16, 161, 112);
+  color: #10a170;
   font-size: 18px;
 }
-
+.summary .panel dl.plus dd {
+  color: #e13923;
+}
+.summary .panel dl.minus dd {
+  color: #23a4eeee;
+}
 /* recent */
 .recent {
   width: 100%;

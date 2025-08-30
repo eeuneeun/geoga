@@ -13,11 +13,11 @@ export default function Home() {
   return (
     <>
       <div>
-        <Calendar />
         <Summary />
+        <Calendar />
         <Recent />
       </div>
-      {/* <AddDialog /> */}
+      <AddDialog />
     </>
   );
 }

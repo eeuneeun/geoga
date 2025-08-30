@@ -12,12 +12,12 @@ type Props = {};
 
 export default function AddDialog({}: Props) {
   return (
-    <div>
+    <div className="dialog">
       <Dialog>
         <DialogTrigger>Open</DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Are you absolutely sure?</DialogTitle>
+            <DialogTitle>수입 & 지출을 입력해주세요.</DialogTitle>
             <DialogDescription>
               This action cannot be undone. This will permanently delete your
               account and remove your data from our servers.

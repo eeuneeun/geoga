@@ -8,7 +8,7 @@ interface UserStore {
   accessToken: string | null;
   error: string | null;
   signIn: (userId: string, password: string) => Promise<boolean>;
-  signOut: (userId: string, accToken: string) => Promise<boolean>;
+  signOut: () => Promise<boolean>;
   fetchAccToken: (accessToken: string) => Promise<void>;
 }
 
@@ -46,7 +46,7 @@ export const useUserStore = create<UserStore>()(
           return false;
         }
       },
-      signOut: async (userId, accToken) => {
+      signOut: async () => {
         //try {
         // const res = await fetch(
         //   `${process.env.NEXT_PUBLIC_API_URL}/user/logout`,
@@ -64,7 +64,7 @@ export const useUserStore = create<UserStore>()(
         set({
           id: 0,
           name: "",
-          accessToken: "",
+          accessToken: null,
         });
 
         return true;

@@ -12,17 +12,17 @@ export default function Summary({}: Props) {
       </h2>
 
       <div className="panel">
-        <dl>
+        <dl className="plus">
           <dt>수입</dt>
           <dd>+26500</dd>
         </dl>
 
-        <dl>
+        <dl className="minus">
           <dt>지출</dt>
           <dd>-26500</dd>
         </dl>
 
-        <dl>
+        <dl className="total">
           <dt>잔액</dt>
           <dd>+26500</dd>
         </dl>
