@@ -70,10 +70,15 @@ button.rbc-input::-moz-focus-inner {
 .rbc-row-segment .rbc-event-content,
 .rbc-event-label {
   display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   font-weight: 600;
+}
+
+.category-badge {
+  background: #3b99fc;
+  color: #fff;
+  font-size: 11px;
+  border-radius: 8px;
+  padding: 2px 8px;
 }
 
 .rbc-rtl {

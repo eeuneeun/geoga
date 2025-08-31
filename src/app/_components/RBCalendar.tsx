@@ -10,7 +10,7 @@ import dummyData from "./tmpDummy";
 const localizer = momentLocalizer(moment); // or globalizeLocalizer
 
 export const RBCalendar = (props: any) => {
-  const [myEvents, setEvents] = useState(dummyData);
+  const [myEvents, setEvents] = useState(props.expense);
 
   const handleSelectSlot = useCallback(
     ({ start, end }) => {
@@ -35,6 +35,16 @@ export const RBCalendar = (props: any) => {
     []
   );
 
+  function CustomEvent({ event }) {
+    return (
+      <div>
+        <strong>{event.title}</strong>
+        <div style={{ fontSize: "15px", color: "gray" }}>{event.price}</div>
+        <span className="category-badge">{event.category}</span>
+      </div>
+    );
+  }
+
   return (
     <div className="calendar-wrap">
       <h2>
@@ -48,8 +58,21 @@ export const RBCalendar = (props: any) => {
           startAccessor="start"
           endAccessor="end"
           defaultDate={defaultDate}
-          defaultView={Views.WEEK}
-          events={myEvents}
+          defaultView={Views.MONTH}
+          events={props.expense}
+          // eventPropGetter={(event) => {
+          //   if (event.type === "background") {
+          //     return {
+          //       style: {
+          //         backgroundColor: "rgba(255, 0, 0, 0.2)", // 반투명 빨강
+          //       },
+          //     };
+          //   }
+          //   return {};
+          // }}
+          components={{
+            event: CustomEvent, // 👈 이벤트 렌더링 커스텀
+          }}
           onSelectEvent={handleSelectEvent}
           onSelectSlot={handleSelectSlot}
           selectable
