@@ -80,6 +80,13 @@ button.rbc-input::-moz-focus-inner {
   border-radius: 8px;
   padding: 2px 8px;
 }
+.category-badge.income {
+  background: #fc513b;
+  color: #fff;
+  font-size: 11px;
+  border-radius: 8px;
+  padding: 2px 8px;
+}
 
 .rbc-rtl {
   direction: rtl;
@@ -243,6 +250,11 @@ button.rbc-input::-moz-focus-inner {
   display: inline-block;
   white-space: nowrap;
 }
+.rbc-btn-group:first-child {
+  display: flex;
+  justify-content: center;
+}
+
 .rbc-btn-group button {
   width: 25%;
 }

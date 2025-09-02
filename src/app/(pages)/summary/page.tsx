@@ -1,15 +1,26 @@
 "use client";
 
-import { Flower } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useLedgerStore } from "src/app/_store/LedgerStore";
+import { Flower } from "lucide-react";
 
 type Props = {};
 
 export default function Summary({}: Props) {
   const { startOfMonth, recentList } = useLedgerStore();
   const [minusPrice, setMinusPrice] = useState(0);
+  const [plusPrice, setPlusPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
+  async function getPlusPrice() {
+    let tmpPrice = 0;
+    await recentList.map((item, idx) => {
+      if (item.isIncome === true) {
+        tmpPrice = tmpPrice + item?.price;
+      }
+    });
+    setPlusPrice(tmpPrice);
+  }
   async function getMinusPrice() {
     let tmpPrice = 0;
     await recentList.map((item, idx) => {
@@ -17,8 +28,11 @@ export default function Summary({}: Props) {
     });
     setMinusPrice(tmpPrice);
   }
+
   useEffect(() => {
     getMinusPrice();
+    getPlusPrice();
+    setTotalPrice(plusPrice - minusPrice);
   }, [recentList]);
 
   return (
@@ -31,17 +45,17 @@ export default function Summary({}: Props) {
       <div className="panel">
         <dl className="plus">
           <dt>수입</dt>
-          <dd>+26500</dd>
+          <dd>+ {plusPrice}</dd>
         </dl>
 
         <dl className="minus">
           <dt>지출</dt>
-          <dd>-{minusPrice}</dd>
+          <dd>- {minusPrice}</dd>
         </dl>
 
         <dl className="total">
           <dt>잔액</dt>
-          <dd>+26500</dd>
+          <dd>{totalPrice}</dd>
         </dl>
       </div>
 

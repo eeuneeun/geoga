@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { category, memo, price, start, end } = await req.json();
+    const { category, memo, price, start, end, isIncome } = await req.json();
     const ledger = await prisma.ledger.create({
       data: {
         category,
@@ -12,6 +12,7 @@ export async function POST(req: Request) {
         price,
         start,
         end,
+        isIncome,
       },
     });
     // res.status(201).json(user);

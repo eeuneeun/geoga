@@ -24,7 +24,11 @@ export default function Recent({}: Props) {
               <dt>{item.memo}</dt>
               <dd>{item.start.split("T")[0]}</dd>
             </dl>
-            <span className="minus">- {item.price}원</span>
+            {item.isIncome ? (
+              <span className="plus">+ {item.price}원</span>
+            ) : (
+              <span className="minus">- {item.price}원</span>
+            )}
           </li>
         ))}
       </ul>

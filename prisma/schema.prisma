@@ -31,5 +31,6 @@ model Ledger {
   price         Int @default(0)
   start         DateTime @default(now())
   end           DateTime @default(now())
+  isIncome      Boolean @default(false)
   createAt      DateTime @default(now())
 }

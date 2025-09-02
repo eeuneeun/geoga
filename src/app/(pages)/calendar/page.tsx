@@ -27,6 +27,7 @@ export default function Calendar({}: Props) {
         price: item.price,
         start: new Date(`${item.start}`),
         end: new Date(`${item.end}`),
+        isIncome: item.isIncome,
         allDay: true,
         resource: "block", // 선택 (커스텀 데이터)
         // 👇 이 속성이 핵심!

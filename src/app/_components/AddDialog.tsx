@@ -9,14 +9,16 @@ type Props = {
     start: Date | null;
     end: Date | null;
   };
+  getExpense: () => void;
 };
 
 type FormValues = {
   category: string;
   memo: string;
   price: number;
+  isIncome: boolean;
 };
-export default function AddDialog({ selectDate }: Props) {
+export default function AddDialog({ selectDate, getExpense }: Props) {
   const { isOpen, closeDialog } = useDialogStore();
 
   const {
@@ -25,12 +27,15 @@ export default function AddDialog({ selectDate }: Props) {
     formState: { errors },
   } = useForm<FormValues>();
 
-  const onSubmit = (data: FormValues) => {
+  const onSubmit = async (data: FormValues) => {
     console.log("폼 데이터:", data);
-    addExpense(data);
+    await addExpense(data);
+    getExpense();
+    closeDialog();
   };
 
   async function addExpense(data: FormValues) {
+    console.log(Boolean(data.isIncome));
     const res = await fetch(`/api/ledger`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -40,6 +45,7 @@ export default function AddDialog({ selectDate }: Props) {
         price: Number(data.price),
         start: new Date(selectDate.start),
         end: new Date(selectDate.end),
+        isIncome: Boolean(data.isIncome),
       }),
     });
     const result = await res.json();
@@ -56,6 +62,16 @@ export default function AddDialog({ selectDate }: Props) {
           </button>
           <form onSubmit={handleSubmit(onSubmit)}>
             <select
+              name="isIncome"
+              id="isIncome"
+              {...register("isIncome", {
+                required: "수입일 경우 선택해주세요!",
+              })}
+            >
+              <option value="0">지출</option>
+              <option value="1">수입</option>
+            </select>
+            <select
               name="category"
               id="category"
               {...register("category", {
@@ -69,6 +85,7 @@ export default function AddDialog({ selectDate }: Props) {
               <option value="보험">보험</option>
               <option value="공과금">공과금</option>
               <option value="월세">월세</option>
+              <option value="월급">월급</option>
               <option value="기타">기타</option>
             </select>
             <input
@@ -76,7 +93,7 @@ export default function AddDialog({ selectDate }: Props) {
               name="memo"
               id="memo"
               {...register("memo", { required: "사용처는 필수입니다" })}
-              placeholder="사용처"
+              placeholder="출처"
             />
             <input
               type="number"

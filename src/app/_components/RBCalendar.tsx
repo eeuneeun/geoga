@@ -43,12 +43,17 @@ export const RBCalendar = (props: any) => {
   );
 
   function CustomEvent({ event }) {
+    console.log(event);
     return (
       <div>
         <Tooltip title={event.title}>
           <div style={{ fontSize: "15px", color: "gray" }}>{event.price}</div>
         </Tooltip>
-        <span className="category-badge">{event.category}</span>
+        <span
+          className={`category-badge ${event.isIncome == true ? "income" : ""}`}
+        >
+          {event.category}
+        </span>
       </div>
     );
   }
@@ -106,7 +111,7 @@ export const RBCalendar = (props: any) => {
         </div>
       </div>
 
-      <AddDialog selectDate={selectDate} />
+      <AddDialog selectDate={selectDate} getExpense={props.getExpense} />
     </>
   );
 };
