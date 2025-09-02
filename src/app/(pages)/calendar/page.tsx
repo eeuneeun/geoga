@@ -1,18 +1,21 @@
-import DefaultCalendar from "../../_components/DefaultCalendar";
-import React, { useEffect, useState } from "react";
-import { RBCalendar } from "../../_components/RBCalendar";
-import AddDialog from "src/app/_components/AddDialog";
+import { useEffect, useState } from "react";
+import dayjs from "dayjs";
+import { RBCalendar } from "src/app/_components/RBCalendar";
+import { useLedgerStore } from "src/app/_store/LedgerStore";
 
 type Props = {};
 
 export default function Calendar({}: Props) {
   const [expense, setExpense] = useState([]);
-
+  const { startOfMonth, endOfMonth } = useLedgerStore();
   async function getExpense() {
-    const res = await fetch("/api/ledger", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
+    const res = await fetch(
+      `/api/ledger?start=${startOfMonth}&end=${endOfMonth}`,
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
     const data = await res.json();
     console.log("data", data);
 
@@ -42,7 +45,7 @@ export default function Calendar({}: Props) {
 
   return (
     <>
-      <RBCalendar expense={expense} />
+      <RBCalendar expense={expense} getExpense={getExpense} />
     </>
   );
 }

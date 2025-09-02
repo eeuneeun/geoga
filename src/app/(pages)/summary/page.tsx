@@ -1,19 +1,26 @@
 "use client";
 
 import { Flower } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLedgerStore } from "src/app/_store/LedgerStore";
 
 type Props = {};
 
 export default function Summary({}: Props) {
-  const { recentList } = useLedgerStore();
+  const { startOfMonth, recentList } = useLedgerStore();
+  const [minusPrice, setMinusPrice] = useState(0);
 
-  let tmpPrice = 0;
-  recentList.map((item, idx) => {
-    tmpPrice = tmpPrice + item.price;
-  });
-  console.log(tmpPrice);
+  async function getMinusPrice() {
+    let tmpPrice = 0;
+    await recentList.map((item, idx) => {
+      tmpPrice = tmpPrice + item?.price;
+    });
+    setMinusPrice(tmpPrice);
+  }
+  useEffect(() => {
+    getMinusPrice();
+  }, [recentList]);
+
   return (
     <div className="summary">
       <h2>
@@ -29,7 +36,7 @@ export default function Summary({}: Props) {
 
         <dl className="minus">
           <dt>지출</dt>
-          <dd>-{tmpPrice}</dd>
+          <dd>-{minusPrice}</dd>
         </dl>
 
         <dl className="total">
