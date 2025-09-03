@@ -101,6 +101,12 @@ h2 {
 .summary .panel dl.minus dd {
   color: #23a4eeee;
 }
+
+.summary .chart {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
 /* recent */
 .recent {
   width: 100%;

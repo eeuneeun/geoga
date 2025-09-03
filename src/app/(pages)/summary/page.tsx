@@ -3,11 +3,12 @@
 import React, { useEffect, useState } from "react";
 import { useLedgerStore } from "src/app/_store/LedgerStore";
 import { Flower } from "lucide-react";
+import DoughnutChart from "src/app/_components/DoughnutChart";
 
 type Props = {};
 
 export default function Summary({}: Props) {
-  const { startOfMonth, recentList } = useLedgerStore();
+  const { startOfMonth, recentList, setRecentList } = useLedgerStore();
   const [minusPrice, setMinusPrice] = useState(0);
   const [plusPrice, setPlusPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -24,7 +25,9 @@ export default function Summary({}: Props) {
   async function getMinusPrice() {
     let tmpPrice = 0;
     await recentList.map((item, idx) => {
-      tmpPrice = tmpPrice + item?.price;
+      if (item.isIncome === false) {
+        tmpPrice = tmpPrice + item?.price;
+      }
     });
     setMinusPrice(tmpPrice);
   }
@@ -32,8 +35,15 @@ export default function Summary({}: Props) {
   useEffect(() => {
     getMinusPrice();
     getPlusPrice();
-    setTotalPrice(plusPrice - minusPrice);
   }, [recentList]);
+
+  useEffect(() => {
+    setTotalPrice(plusPrice - minusPrice);
+  }, [minusPrice]);
+
+  useEffect(() => {
+    setRecentList();
+  }, []);
 
   return (
     <div className="summary">
@@ -59,7 +69,9 @@ export default function Summary({}: Props) {
         </dl>
       </div>
 
-      <div className="chart"></div>
+      <div className="chart">
+        <DoughnutChart />
+      </div>
     </div>
   );
 }

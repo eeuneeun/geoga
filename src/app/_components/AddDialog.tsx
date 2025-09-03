@@ -84,7 +84,7 @@ export default function AddDialog({ selectDate, getExpense }: Props) {
               <option value="통신비">통신비</option>
               <option value="보험">보험</option>
               <option value="공과금">공과금</option>
-              <option value="월세">월세</option>
+              <option value="주거비">주거비</option>
               <option value="월급">월급</option>
               <option value="기타">기타</option>
             </select>

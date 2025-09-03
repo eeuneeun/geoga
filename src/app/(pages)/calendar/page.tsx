@@ -1,3 +1,6 @@
+"use client";
+
+import "../../_styles/calendar.css";
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { RBCalendar } from "src/app/_components/RBCalendar";

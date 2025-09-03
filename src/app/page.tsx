@@ -1,6 +1,5 @@
 "use client";
 
-import "./_styles/calendar.css";
 import Calendar from "./(pages)/calendar/page";
 import Summary from "./(pages)/summary/page";
 import Recent from "./(pages)/recent/page";

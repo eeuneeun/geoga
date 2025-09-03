@@ -33,6 +33,7 @@ export const useLedgerStore = create<DialogStore>()((set, get) => ({
   },
   setRecentList: async () => {
     const { startOfMonth, endOfMonth } = get();
+    console.log(startOfMonth, endOfMonth);
     const res = await fetch(
       `/api/ledger?start=${startOfMonth}&end=${endOfMonth}`,
       {

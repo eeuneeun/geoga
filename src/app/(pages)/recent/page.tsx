@@ -1,3 +1,5 @@
+"use client";
+
 import { Lightbulb } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useLedgerStore } from "src/app/_store/LedgerStore";
